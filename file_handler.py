@@ -14,9 +14,6 @@ def get_dict_from_csv(file_name):      #file reader for uncleaned data
                 time = datetime.strptime(row[1],'%H:%M').time()
                 key = datetime.combine(date,time)
                 key = format(key, '%Y%m%d%H%M')
-                #date = row[0]
-                #time= row[1]
-                #key = str(date[0:4]+date[5:7]+date[8:10]+time[0:2]+time[3:5])
                 key1 = int(key)
                 modified_row = [row[3].replace(',','.'), row[4].replace(',','.'), row[5].replace(',','.'), row[6].replace(',','.'), row[7]]
                 dict[key1] = modified_row
@@ -87,7 +84,7 @@ def filling_missing_rows(dict):
             filled_dict[minute] = dict[minute]
             open = dict[minute][3]
         else:
-            missing_minutes.append(minute) # majd szürjem ki ha 8:00 hiányzik
+            missing_minutes.append(minute) 
             filled_dict[minute] = [open, 0, 0, 0, 0] #Open, High, Low, Close, Volume
     for minute in minute_list[::-1]:
         if minute in missing_minutes:
