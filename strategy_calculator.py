@@ -2,8 +2,6 @@ import chart_definitions
 import file_handler
 
 daily_list = file_handler.get_days_from_csv(r'C:\Users\McLoad\Desktop\Python2\strings\Stock_strategy\cleaned.csv')
-#day = daily_list[0]
-#one_direction = chart_definitions.trend_searcher_double(day)
 
 def trend_turning_list(list,day):
     tt_list = []
@@ -16,8 +14,6 @@ def trend_turning_list(list,day):
             tt_list.append(i)
     return tt_list
 
-#tt_list = trend_turning_list(one_direction,day)
-
 def fourty_ten_morning_strategy(day,tt_list): # Cheking all morning tt index < 120 with 40 point target and 10 point fix stop loss 
     results = []
     for test in tt_list:
@@ -29,8 +25,6 @@ def fourty_ten_morning_strategy(day,tt_list): # Cheking all morning tt index < 1
             result = chart_definitions.exit_searcher(day,open,info[0],40,10)
             results.append([test,result])
     return results
-    
-#print(sixty_ten_morning_strategy(day,tt_list))
 
 def strategy(daily_list):
     day_number = 1
